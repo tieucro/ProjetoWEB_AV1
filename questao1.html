@@ -1,0 +1,98 @@
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Desenvolvimento Web - 1 Questao</title>
+    
+    <script>
+        function calcularMediaA(){
+            nome        = form_calcularmedia.nome.value;
+            disciplina  = form_calcularmedia.disciplina.value;
+            notaUm      = form_calcularmedia.nota1.value;
+            notaDois    = form_calcularmedia.nota1.value;
+
+            media = (parseFloat(notaUm) + parseFloat(notaDois))/2;
+            
+            if (media < 3){
+                resultado = 'Reprovado';
+            }
+
+            else if (media > 7){
+                resultado = 'Aprovado';
+            }
+
+            else{
+                resultado = 'Recuperação';
+            }
+
+            document.getElementById("nomeAluno").innerHTML = '<p><b>Nome:</b></p>' + nome;
+            document.getElementById("nomeDisciplina").innerHTML = '<p><b>Disciplina:</b></p>' + disciplina;
+            document.getElementById("suaMedia").innerHTML = '<p><b>Média:</b></p>' + media;
+            document.getElementById("situacao").innerHTML = '<p><b>Situação:</b></p>' + resultado;
+
+        }
+    </script>
+  </head>
+  <body>
+      <!--Menu do site abaixo-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+        <a class="navbar-brand" href="#">QUESTÃO 1</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Questões
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="questao1.html">Primeira Questão</a>
+                <a class="dropdown-item" href="questao2.html">Segunda Questão</a>
+                <a class="dropdown-item" href="questao3.html">Terceira Questão</a>
+                <a class="dropdown-item" href="questao4.html">Quarta Questão</a>
+                <a class="dropdown-item" href="index.html">Informações</a>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+    
+    <div class="container" style="margin-top: 10px;">
+
+
+    <form id="form_calcularmedia" name="form_calcularmedia" method="POST" action="">
+        <label>Seu nome</label>
+            <input type="text" name="nome" id="nome" required><br><br>
+        <label>Disciplina</label>
+            <input type="text" name="disciplina" id="disciplina" required><br><br>
+        <label>Nota 1</label>
+            <input type="number" name="nota1" id="nota1" required><br><br>
+        <label>Nota 2</label>
+            <input type="number" name="nota2" id="nota2" required><br><br>
+
+        <button type="button"  class="btn bg-success" onclick="calcularMediaA()">Calcular</button>
+    </form>
+
+    <div>
+        <p id="nomeAluno">Nome:</p>
+        <p id="nomeDisciplina">Disciplina:</p>
+        <p id="suaMedia">Média:</p>
+        <p id="situacao">Situação:</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </body>
+</html>

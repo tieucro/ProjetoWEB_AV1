@@ -1,0 +1,136 @@
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Desenvolvimento Web - 3 Questao</title>
+  </head>
+  <body>
+    <!--Menu do site abaixo-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+        <a class="navbar-brand" href="#">QUESTÃO 3</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Questões
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="questao1.html">Primeira Questão</a>
+                <a class="dropdown-item" href="questao2.html">Segunda Questão</a>
+                <a class="dropdown-item" href="questao3.html">Terceira Questão</a>
+                <a class="dropdown-item" href="questao4.html">Quarta Questão</a>
+                <a class="dropdown-item" href="index.html">Informações</a>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+    
+    <div class="container" style="margin-top: 10px;">
+
+        <!--formulario para pegar as informações-->
+        <form name="form_gerarcontracheque" id="form_gerarcontracheque" method="POST" action="">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label >Funcionário</label>
+                    <input type="text" class="form-control" id="funcionario" name="funcionario">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label >Cargo</label>
+                    <select id="cargo" name="cargo" class="form-control">
+                        <option selected disabled value="">Selecione...</option>
+                        <option value="Atendente">Atendente</option>
+                        <option value="Estoquista">Estoquista</option>
+                        <option value="Gerente">Gerente</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label >Salário Atual</label>
+                    <input type="text" class="form-control" id="salario" name="salario">
+                </div>
+            </div>
+            <button onclick="contracheque()" type="button" class="btn bg-success">Gerar</button>
+          </form>
+
+
+        <!--aqui irá mostrar na tela o resultado-->
+            <div>
+                <br>
+                <h4>RESULTADOS:</h4>
+                <div id="resultado">
+
+                </div>
+            </div>
+    </div>
+
+    <!--Script-->
+    <script>
+        function contracheque() {
+          var funcionario   = form_gerarcontracheque.funcionario.value;
+          var cargo         = form_gerarcontracheque.cargo.value;
+          var salario       = form_gerarcontracheque.salario.value;
+  
+          if (cargo == "Atendente"){
+            var aumento = parseFloat(salario) * 0.08;
+            var novosalario = parseFloat(salario) + parseFloat(aumento);
+          }
+          else if (cargo == "Estoquista"){
+            var aumento = parseFloat(salario) * 0.06;
+            var novosalario = parseFloat(salario) + parseFloat(aumento);
+          }
+          else {
+            var aumento = parseFloat(salario) * 0.03;
+            var novosalario = parseFloat(salario) + parseFloat(aumento);
+          }
+  
+          if (novosalario <= 1045){
+            var inss = parseFloat(novosalario) * 0.075;
+            var sal_liquido = parseFloat(novosalario) - parseFloat(inss);
+          }
+          else if ((novosalario > 1045) && (novosalario <= 2089.60))   {
+            var inss = parseFloat(novosalario) * 0.09;
+            var sal_liquido = parseFloat(novosalario) - parseFloat(inss);
+          }
+          else if ((novosalario > 2089.60) && (novosalario <= 3134.40))   {
+            var inss = parseFloat(novosalario) * 0.12;
+            var sal_liquido = parseFloat(novosalario) - parseFloat(inss);
+          }
+          else {
+            var inss = parseFloat(novosalario) * 0.20;
+            var sal_liquido = parseFloat(novosalario) - parseFloat(inss);
+          } 
+  
+          document.getElementById("resultado").innerHTML=
+        "----------------------------------------- CONTRA CHEQUE --------------------------------"+
+        "<br>FUNCIONÁRIO: "+funcionario+
+        "<br>CARGO: "+cargo+
+        "<br>SALÁRIO ATUAL: "+salario+
+        "<br>AUMENTO: "+aumento+
+        "<br>NOVO SALÁRIO: "+novosalario+
+        "<br>DESC. INSS: "+inss.toFixed(2)+
+        "<br>SALÁRIO LIQUIDO: "+sal_liquido.toFixed(2)+
+        "<br>-----------------------------------------------------------------------------------------------------"
+  
+        }
+      </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
